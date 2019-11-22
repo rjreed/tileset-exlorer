@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Tileset Explorer</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./assets/css/layout.css" />
+    <link rel="stylesheet" href="./assets/css/typography.css" />
+    <script src="./assets/js/index.js" defer type="module"></script>
+  </head>
+  <body>
+    <h2>
+      Tileset Explorer
+    </h2>
+    <div class="input-row">
+      <label for="tile-width">Tile Width (px):</label>
+      <input id="tile-width" class=" num js-tile-width" value="32" />
+    </div>
+    <div class="input-row">
+      <label for="tile-height">Tile Height (px):</label>
+      <input id="tile-height" class="num js-tile-height" value="32" />
+    </div>
+
+    <div class="input-row">
+      <label for="grid-color">Grid Color:</label>
+      <input
+        class="js-grid-color"
+        type="color"
+        id="grid-color"
+        name="head"
+        value="#7bff00"
+      />
+    </div>
+    <div class="input-row">
+      <label for="file-upload">Tileset File:</label>
+      <input id="file-upload" type="file" class="js-file-upload" />
+    </div>
+    <hr />
+    <canvas class="js-canvas"></canvas>
+  </body>
+</html>
