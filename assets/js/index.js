@@ -106,7 +106,7 @@ function draw_grid() {
 }
 
 function render() {
-  ctx.clearRect(0, 0, canvas.height, canvas.width);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.drawImage(img, 0, 0);
 
   draw_grid();
