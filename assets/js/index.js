@@ -61,8 +61,8 @@ function read_image() {
       const g = new Image();
 
       g.addEventListener("load", function() {
-        canvas.width = g.width + 200;
-        canvas.height = g.height + 64;
+        canvas.width = g.width + 225;
+        canvas.height = g.height + 100;
         bounds = canvas.getBoundingClientRect();
         img = g;
 
