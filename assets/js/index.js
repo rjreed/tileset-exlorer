@@ -85,7 +85,7 @@ function draw_grid() {
   let w = cw / conf.tile_width;
   let h = ch / conf.tile_height;
 
-  for (let i = 0; i < w; i++) {
+  for (let i = 0; i <= w; i++) {
     let j = i * conf.tile_width;
     
     ctx.strokeStyle = conf.grid_color;
@@ -95,7 +95,7 @@ function draw_grid() {
     ctx.stroke(); // Render the path
   }
 
-  for (let i = 0; i < h; i++) {
+  for (let i = 0; i <= h; i++) {
     let j = i * conf.tile_height;
     
     ctx.beginPath(); // Start a new path

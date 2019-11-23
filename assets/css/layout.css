@@ -5,3 +5,10 @@
 .num { 
   width: 50px;
 }
+
+.tooltip {
+  position: absolute;
+  z-index: 999;
+  width: 200px;
+  height: 64px;
+}
