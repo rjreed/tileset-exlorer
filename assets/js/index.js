@@ -66,7 +66,7 @@ function read_image() {
         bounds = canvas.getBoundingClientRect();
         img = g;
 
-        mainLoop();
+        main_loop();
       });
 
       g.src = e.target.result;
@@ -118,8 +118,8 @@ function render() {
   }
 }
 
-function mainLoop() {
-  window.requestAnimationFrame(mainLoop);
+function main_loop() {
+  window.requestAnimationFrame(main_loop);
 
   let currentTime = new Date().getTime();
   let delta = currentTime - lastTime;
