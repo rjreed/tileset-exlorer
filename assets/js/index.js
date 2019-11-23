@@ -61,8 +61,8 @@ function read_image() {
       const g = new Image();
 
       g.addEventListener("load", function() {
-        canvas.width = g.width;
-        canvas.height = g.height;
+        canvas.width = g.width + 200;
+        canvas.height = g.height + 64;
         bounds = canvas.getBoundingClientRect();
         img = g;
 
@@ -79,8 +79,8 @@ function read_image() {
 el(hooks.file_upload).addEventListener("change", read_image, false);
 
 function draw_grid() {
-  let cw = canvas.width;
-  let ch = canvas.height;
+  let cw = img.width;
+  let ch = img.height;
 
   let w = cw / conf.tile_width;
   let h = ch / conf.tile_height;
@@ -91,7 +91,7 @@ function draw_grid() {
     ctx.strokeStyle = conf.grid_color;
     ctx.beginPath(); // Start a new path
     ctx.moveTo(j, 0); // Move the pen to (30, 50)
-    ctx.lineTo(j, canvas.height); // Draw a line to (150, 100)
+    ctx.lineTo(j, img.height); // Draw a line to (150, 100)
     ctx.stroke(); // Render the path
   }
 
@@ -100,7 +100,7 @@ function draw_grid() {
     
     ctx.beginPath(); // Start a new path
     ctx.moveTo(0, j); // Move the pen to (30, 50)
-    ctx.lineTo(canvas.width, j); // Draw a line to (150, 100)
+    ctx.lineTo(img.width, j); // Draw a line to (150, 100)
     ctx.stroke(); // Render the path
   }
 }
@@ -138,6 +138,7 @@ function highlight_tile(x, y) {
 }
 
 function draw_tooltip(x, y) {
+  
   ctx.fillStyle = conf.tooltip_bg_color;
   ctx.fillRect(x + 20, y + 20, 200, 64);
   ctx.font = "14px sans-serif";
@@ -154,12 +155,19 @@ function draw_tooltip(x, y) {
 }
 
 function mouse_handler(e) {
+  
   mouse.x = e.clientX - (e.clientX - e.offsetX);
   mouse.y = e.clientY - (e.clientY - e.offsetY);
   mouse.gridX = Math.floor(mouse.x / conf.tile_width);
   mouse.gridY = Math.floor(mouse.y / conf.tile_height);
   mouse.offsetX = mouse.gridX * conf.tile_width;
   mouse.offsetY = mouse.gridY * conf.tile_height;
+  
+  if (mouse.x < img.width && mouse.y < img.height){
+    mouse.within_bounds = true;
+  } else {
+    mouse.within_bounds = false;
+  }
 }
 
 function select_text(e) {
@@ -167,10 +175,6 @@ function select_text(e) {
 }
 
 canvas.addEventListener("mousemove", mouse_handler);
-
-canvas.onmouseover = function() {
-  mouse.within_bounds = true;
-};
 
 canvas.onmouseout = function() {
   mouse.within_bounds = false;
